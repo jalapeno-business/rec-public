@@ -35,25 +35,7 @@ let getDataToDatabase = function(seededData) {
 }
 
 getDataToDatabase(seededData);
-// let getDataToDatabase = function(saveThis) {
-//     let currentRest = new Restaurant(restaurant)
-//     currentRest.forEach(rest => {
-//       rest.save((err, rest) => {
-//         if (err) {
-//             console.log("could not save data in db", err);
-//         } 
-//       });
-//     });
-// }
-// restaurants.forEach(restaurant => {
-//     const tempRest = new Restaurant(restaurant)
-//     tempRest.validate(err => {
-//         if (err) {
-//             //wejifowjeoifw
-//         }
-//     } else {
-//         temprest.save
-// })
+
 
 // module.exports = {
 //     getDataToDatabase: getDataToDatabaseow 
