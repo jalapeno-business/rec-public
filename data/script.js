@@ -60,7 +60,7 @@ var publicationData = function(num) {
         restaurants.push(restaurant)
     } 
     
-    console.log(restaurants);
+    // console.log(restaurants);
     
     var jsoned = JSON.stringify(restaurants, null, 2);
     fs.writeFileSync(path.join(__dirname, 'seeded_data.json'), jsoned, 'utf8');
