@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "recommendations",
   "version": "",
   "description": "",
   "author": "",
@@ -8,8 +8,14 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "seed-data": "node data/script.js & node database/index.js"
   },
   "dependencies": {
+    "faker": "^4.1.0",
+    "fs": "0.0.1-security",
+    "mongodb": "^3.1.4",
+    "mongoose": "^5.2.13",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"

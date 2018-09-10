@@ -4,10 +4,10 @@
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/jalapeno-business/rec-public.git
+  - https://github.com/jalapeno-business/restaurant-info.git
+  - https://github.com/jalapeno-business/carousel.git
+  - https://github.com/jalapeno-business/navbar.git
 
 ## Table of Contents
 
