@@ -3,64 +3,68 @@ var fs = require('fs');
 var path = require('path');
 
 var publicationData = function(num) {
-    let data = []
-    for (let i = 0; i < num; i++) {
-        data.push(
-            {
-                img: faker.image.nightlife(), 
-                title: faker.lorem.words(), 
-                url: faker.image.imageUrl(), 
-                // date: faker.date.between()
-            });
-        }
-        return data; 
-    }
+  let data = [];
+  for (let i = 0; i < num; i++) {
+    data.push(
+      {
+        img: 'https://storage.googleapis.com/zagat-top-places/2014-12-san-francisco/27_4505_burger.jpg?max-w=305&auto=format', 
+        title: faker.lorem.words(), 
+        // url: faker.image.imageUrl(), 
+        url: 'https://storage.googleapis.com/zagat-top-places/2014-12-san-francisco/27_4505_burger.jpg?max-w=305&auto=format'
+        // date: faker.date.between()
+      });
+  }
+  return data; 
+};
     
-    var whatToOrderData = function(num) {
-        let data = [];
-        for (let i = 0; i < num; i++) {
-            data.push(
-                {
-                    title: faker.lorem.words(), 
-                    img: faker.image.food()
-                }
-            )
-        }
-        return data; 
-    }
+var whatToOrderData = function(num) {
+  let data = [];
+  for (let i = 0; i < num; i++) {
+    data.push(
+      {
+        title: faker.lorem.words(), 
+        // img: faker.image.food()
+        img: 'https://storage.googleapis.com/zagat-top-places/2014-12-san-francisco/27_4505_burger.jpg?max-w=305&auto=format'
+      }
+    );
+  }
+  return data; 
+};
     
-    var photoData = function(num) {
-        let data = [];
-        for (let i = 0 ; i < num; i++) {
-            data.push(
-                {
-                    name: faker.image.food(),
-                    sm: faker.image.food(),
-                    med: faker.image.food(),
-                    lg: faker.image.food(),
-                }            
-            )
-        }
-        return data; 
-    }
+var photoData = function(num) {
+  let data = [];
+  for (let i = 0; i < num; i++) {
+    data.push(
+      {
+        name: faker.image.food(),
+        sm: faker.image.food(),
+        med: faker.image.food(),
+        lg: faker.image.food(),
+      }            
+    );
+  }
+  return data; 
+};
 
-    let createRestaurants = function(id) {
-        return {
-            id: id,
-            publicationsList: publicationData(faker.random.number({min: 1, max: 15})), 
-            whatToOrderList: whatToOrderData(faker.random.number(3)),
-            photos: photoData(faker.random.number(10))
-        }
-    }
+let createRestaurants = function(id) {
+  return {
+    id: id,
+    restaurant: faker.name.firstName(),
+    insiderTip: faker.lorem.paragraph(),
+    publicationsList: publicationData(faker.random.number({min: 1, max: 15})), 
+    whatToOrderList: whatToOrderData(faker.random.number(3)),
+    photos: photoData(faker.random.number(10))
+  };
+};
     
     
-    var restaurants = [];
-    for (let i = 1; i <= 100; i++) {
-        let restaurant = createRestaurants(i);
-        restaurants.push(restaurant)
-    } 
+var restaurants = [];
+for (let i = 1; i <= 100; i++) {
+  let restaurant = createRestaurants(i);
+  restaurants.push(restaurant);
+} 
     
-    // console.log(restaurants);
+// console.log(restaurants);
     
-    var jsoned = JSON.stringify(restaurants, null, 2);
-    fs.writeFileSync(path.join(__dirname, 'seeded_data.json'), jsoned, 'utf8');
+var jsoned = JSON.stringify(restaurants, null, 2);
+fs.writeFileSync(path.join(__dirname, 'seeded_data.json'), jsoned, 'utf8');

@@ -1,0 +1,13 @@
+.app p{
+  color: blue;
+  /* font: 'Calibre-Regular'; */
+}
+
+body {
+  background-color: #f1f1f2;
+}
+
+.outerContainer {
+  border: 6px black;
+  background-color: white;
+}

@@ -1,0 +1,11 @@
+.test h1 {
+  color: green;
+  font: 'Roboto' ;
+}
+
+.photo {
+  color: red;
+  background-size: cover;
+  height:176px;
+  width:100%;
+}
