@@ -9,6 +9,7 @@ var restaurantSchema = new mongoose.Schema({
   insiderTip: String,
   publicationsList: Array,
   whatToOrderList: Array, 
+  knownForIcons: Array,
   photos: Array
 });
 
@@ -22,6 +23,7 @@ let getDataToDatabase = function() {
       insiderTip: rest.insiderTip,
       publicationsList: rest.publicationsList,
       whatToOrderList: rest.whatToOrderList, 
+      knownForIcons: rest.knownForIcons,
       photos: rest.photos
     }, {unique: true});
     currentRest.save((err, rest) => {

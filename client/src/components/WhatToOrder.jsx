@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from './whatToOrder.styles.css';
+import styles from './WhatToOrder.styles.css';
 
 class WhatToOrder extends React.Component {
 
   setImage(item) {
-    let defaultImage = 'http s://storage.googleapis.com/zagat-top-places/2014-12-san-francisco/27_4505_burger.jpg?max-w=305&auto=format';
+    let defaultImage = 'https://www.thetastesf.com/wp-content/uploads/2016/08/Mensho-Tokyo-SF-ramen-thetastesf-DSC01715-2.jpg';
     if (item.img) {
       return (
         <div className={styles.photo} style={{backgroundImage: `url(${item.img})`}}> {item.title}</div>
@@ -18,12 +18,12 @@ class WhatToOrder extends React.Component {
 
   render() {
     return (
-      <div className={styles.test}> 
+      <div> 
         <h1> What To Order and {this.props.whatToOrder.length}</h1>
         {
           this.props.whatToOrder.map(item => {
             return (
-              <div key={item.id}>{this.setImage(item)}</div>
+              <div key={item.id} className={this.test}>{this.setImage(item)}</div>
             );
           })
         }

@@ -1,31 +1,26 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-class ZagatMentions extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      mentions: []
-    };
-  }
+import styles from './ZagatMentions.styles.css';
 
-  // componentDidMount() {
-  //   console.log('component did mount zagat mentions', this.props);
-  //   this.setState({
-  //     mentions: [this.props.mentions]
-  //   });
-  // }
+class ZagatMentions extends React.Component {  
   render() {
     return (
       <div>
+        <h1> Zagat Mentions of {this.props.restaurantName} </h1>
         {
-  console.log(this.props)
-      
+          this.props.mentions.map(item => {
+            return (
+              <div className={styles.mention}> 
+                <a href={item.url} target="_blank" rel="noreferrer noopener"><img src={item.img} /></a>
+                <h1>This is the title</h1>
+              </div>
+            );
+          })
         }
       </div>
     );
   }
-
-
 }
 
 export default ZagatMentions;

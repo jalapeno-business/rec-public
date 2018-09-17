@@ -9,9 +9,7 @@ var publicationData = function(num) {
       {
         img: 'https://storage.googleapis.com/zagat-top-places/2014-12-san-francisco/27_4505_burger.jpg?max-w=305&auto=format', 
         title: faker.lorem.words(), 
-        // url: faker.image.imageUrl(), 
         url: 'https://storage.googleapis.com/zagat-top-places/2014-12-san-francisco/27_4505_burger.jpg?max-w=305&auto=format'
-        // date: faker.date.between()
       });
   }
   return data; 
@@ -23,7 +21,6 @@ var whatToOrderData = function(num) {
     data.push(
       {
         title: faker.lorem.words(), 
-        // img: faker.image.food()
         img: 'https://storage.googleapis.com/zagat-top-places/2014-12-san-francisco/27_4505_burger.jpg?max-w=305&auto=format'
       }
     );
@@ -31,19 +28,26 @@ var whatToOrderData = function(num) {
   return data; 
 };
     
-var photoData = function(num) {
-  let data = [];
+var knownForIcons = function(num) {
+  var possibleKnownFors = [
+    {tite: 'Parking', icon: 'car'},
+    {title: 'Birthdays', icon: 'birthday-cake'},
+    {title: 'Vegetarian', icon: 'leaf'},
+    {title: 'Alcohol', icon: 'glass-martini'},
+    {title: 'Drinks', icon: 'beer'},
+    {title: 'Music', icon: 'headphones-alt'},
+    {title: 'Pets', icon: 'paw'},
+    {title: 'Dining', icon: 'utensils'},
+    {title: 'Dessert', icon: 'cookie-bite'},
+  ];
+  var using = [];
   for (let i = 0; i < num; i++) {
-    data.push(
-      {
-        name: faker.image.food(),
-        sm: faker.image.food(),
-        med: faker.image.food(),
-        lg: faker.image.food(),
-      }            
-    );
+    let item = possibleKnownFors[Math.floor(Math.random() * Math.floor(possibleKnownFors.length))];
+    if (!using.includes(item)) {
+      using.push(item);
+    }
   }
-  return data; 
+  return using;
 };
 
 let createRestaurants = function(id) {
@@ -53,18 +57,15 @@ let createRestaurants = function(id) {
     insiderTip: faker.lorem.paragraph(),
     publicationsList: publicationData(faker.random.number({min: 1, max: 15})), 
     whatToOrderList: whatToOrderData(faker.random.number(3)),
-    photos: photoData(faker.random.number(10))
+    knownForIcons: knownForIcons(Math.floor(Math.random() * Math.floor(7))),
   };
 };
-    
     
 var restaurants = [];
 for (let i = 1; i <= 100; i++) {
   let restaurant = createRestaurants(i);
   restaurants.push(restaurant);
 } 
-    
-// console.log(restaurants);
     
 var jsoned = JSON.stringify(restaurants, null, 2);
 fs.writeFileSync(path.join(__dirname, 'seeded_data.json'), jsoned, 'utf8');

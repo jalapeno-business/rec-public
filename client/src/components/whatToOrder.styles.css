@@ -3,9 +3,15 @@
   font: 'Roboto' ;
 }
 
+.test {
+  display: inline-block;
+}
 .photo {
-  color: red;
-  background-size: cover;
-  height:176px;
+  color: white;
+  display: flex;
+  background-size: 20em;
+  background-repeat: no-repeat;
+  height:100px;
   width:100%;
+  resize: both;
 }
