@@ -1,42 +1,55 @@
 const mongoose = require('mongoose');
+
 mongoose.connect('mongodb://student:student12345!@ds251362.mlab.com:51362/jalapeno-business-recommendations');
-var scripts = require('../data/script');
-var seededData = require('../data/seeded_data.json');
-var db = mongoose.connection;
+// var scripts = require('../data/script');
+const seededData = require('../data/seeded_data.json');
 
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-    // we're connected!
+const restaurantSchema = new mongoose.Schema({
+  _id: Number,
+  restaurant: String,
+  insiderTip: String,
+  publicationsList: Array,
+  whatToOrderList: Array,
+  knownForIcons: Array,
+  photos: Array,
 });
 
-var restaurantSchema = new mongoose.Schema({
-    id: Number,
-    publicationsList: Array,
-    whatToOrderList: Array, 
-    photos: Array
-});
+const Restaurant = mongoose.model('Restaurant', restaurantSchema);
 
-var Restaurant = mongoose.model('Restaurant', restaurantSchema);
-
-let getDataToDatabase = function(seededData) {
-    seededData.forEach(rest => {
-        let currentRest = new Restaurant({
-            id: rest.id,
-            publicationsList: rest.publicationsList,
-            whatToOrderList: rest.whatToOrderList, 
-            photos: rest.photos
-        });
-        currentRest.save((err, rest) => {
-            if (err) {
-                console.log("could not save data in db", err);
-            } 
-        });
+const getDataToDatabase = function () {
+  seededData.forEach((rest) => {
+    const currentRest = new Restaurant({
+      _id: rest.id,
+      restaurant: rest.restaurant,
+      insiderTip: rest.insiderTip,
+      publicationsList: rest.publicationsList,
+      whatToOrderList: rest.whatToOrderList,
+      knownForIcons: rest.knownForIcons,
+      photos: rest.photos,
+    }, { unique: true });
+    currentRest.save((err, rest) => {
+      if (err) {
+        console.log('could not save data in db', err);
+      } else {
+        // console.log("successfully saved data", rest);
+      }
     });
-}
+  });
+};
 
-getDataToDatabase(seededData);
+const getDataFromDatabase = (id, getData) => {
+  Restaurant.find({ _id: id }, (err, arrOfObj) => {
+    if (err) {
+      console.log('error in gettingdatafromdb', err);
+      getData(err, null);
+    } else {
+      console.log('get req success');
+      getData(null, arrOfObj);
+    }
+  });
+};
 
-
-// module.exports = {
-//     getDataToDatabase: getDataToDatabaseow 
-// };
+getDataToDatabase();
+module.exports = {
+  getDataFromDatabase,
+};

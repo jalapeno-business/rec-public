@@ -1,0 +1,17 @@
+.itemList {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.knownImage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 72px;
+}
+
+.knownText {
+  text-align: center;
+}
