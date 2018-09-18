@@ -1,13 +1,5 @@
 import React from 'react';
-import WhatToOrder from './WhatToOrder.jsx';
-import InsiderTip from './InsiderTip.jsx';
-import KnownFor from './KnownFor.jsx';
-import axios from 'axios';
-import styles from './app.styles.css';
-import ZagatMentions from './ZagatMentions.jsx';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
+import {
   faBirthdayCake,
   faLeaf,
   faGlassMartini,
@@ -15,8 +7,17 @@ import {
   faHeadphonesAlt,
   faPaw,
   faUtensils,
-  faCookieBite
+  faCookieBite,
 } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import WhatToOrder from './WhatToOrder';
+import InsiderTip from './InsiderTip';
+import KnownFor from './KnownFor';
+import styles from './app.styles.css';
+import ZagatMentions from './ZagatMentions';
+
 library.add(
   faBirthdayCake,
   faLeaf,
@@ -25,7 +26,7 @@ library.add(
   faHeadphonesAlt,
   faPaw,
   faUtensils,
-  faCookieBite
+  faCookieBite,
 );
 
 class App extends React.Component {
@@ -41,43 +42,45 @@ class App extends React.Component {
     this.getData = this.getData.bind(this);
   }
 
-  getData(id) {
-    axios('/recommendations/1')
-      .then( res => {
-        console.log(res.data[0]);
-        let data = res.data[0].whatToOrderList;
-        while (data.length < 3) {
-          data.push('');
-        }
-        this.setState({
-          whatToOrder: data, 
-          insiderTip: res.data[0].insiderTip,
-          publicationsList: res.data[0].publicationsList,
-          restaurantName: res.data[0].restaurant,
-          knownFor: res.data[0].knownForIcons
-        });
-        console.log("before state check", this.state.knownFor);
-      })
-      .catch(function(error) {
-        console.log('error found in getwhattoorderohoto in app.jsx', error);
-      });
-  }
-
   componentDidMount() {
     this.getData(window.location.pathname);
   }
 
+  getData(id) {
+    axios('/api/1/recommendations')
+      .then((res) => {
+        const data = res.data[0].whatToOrderList;
+        while (data.length < 3) {
+          data.push('');
+        }
+        this.setState({
+          whatToOrder: data,
+          insiderTip: res.data[0].insiderTip,
+          publicationsList: res.data[0].publicationsList,
+          restaurantName: res.data[0].restaurant,
+          knownFor: res.data[0].knownForIcons,
+        });
+      })
+      .catch((error) => {
+        // console.log('error found in getwhattoorderohoto in app.jsx', error);
+        throw error;
+      });
+  }
+
   render() {
+    const {
+      whatToOrder, insiderTip, publicationsList, restaurantName, knownFor,
+    } = this.state;
     return (
-      <div className={styles.outerContainer}> 
+      <div className={styles.outerContainer}>
         <div className={styles.app}>
-          <WhatToOrder whatToOrder={this.state.whatToOrder}/>
+          <WhatToOrder whatToOrder={whatToOrder} />
         </div>
-        <InsiderTip insiderTip={this.state.insiderTip} />
-        <KnownFor knownFor={this.state.knownFor} />  
-        <ZagatMentions mentions={this.state.publicationsList} restaurantName={this.state.restaurantName}/>
+        <InsiderTip insiderTip={insiderTip} />
+        <KnownFor knownFor={knownFor} />
+        <ZagatMentions mentions={publicationsList} restaurantName={restaurantName} />
       </div>
-    ); 
+    );
   }
 }
 

@@ -1,17 +1,20 @@
-.test h1 {
-  color: green;
-  font: 'Roboto' ;
-}
 
-.test {
-  display: inline-block;
+.itemList {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 .photo {
-  color: white;
-  display: flex;
-  background-size: 20em;
+  display: block;
+  flex-direction: column;
+  background-size: cover;
   background-repeat: no-repeat;
-  height:100px;
-  width:100%;
-  resize: both;
+  padding: 5px;
+  height: 150px;
+  width: 150px;
+  justify-content: space-around;
+}
+
+.text {
+  align-items: right;
 }

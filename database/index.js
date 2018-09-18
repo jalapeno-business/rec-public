@@ -1,31 +1,32 @@
 const mongoose = require('mongoose');
+
 mongoose.connect('mongodb://student:student12345!@ds251362.mlab.com:51362/jalapeno-business-recommendations');
 // var scripts = require('../data/script');
-var seededData = require('../data/seeded_data.json');
+const seededData = require('../data/seeded_data.json');
 
-var restaurantSchema = new mongoose.Schema({
+const restaurantSchema = new mongoose.Schema({
   _id: Number,
   restaurant: String,
   insiderTip: String,
   publicationsList: Array,
-  whatToOrderList: Array, 
+  whatToOrderList: Array,
   knownForIcons: Array,
-  photos: Array
+  photos: Array,
 });
 
-var Restaurant = mongoose.model('Restaurant', restaurantSchema);
+const Restaurant = mongoose.model('Restaurant', restaurantSchema);
 
-let getDataToDatabase = function() {
-  seededData.forEach(rest => {
-    let currentRest = new Restaurant({
+const getDataToDatabase = function () {
+  seededData.forEach((rest) => {
+    const currentRest = new Restaurant({
       _id: rest.id,
       restaurant: rest.restaurant,
       insiderTip: rest.insiderTip,
       publicationsList: rest.publicationsList,
-      whatToOrderList: rest.whatToOrderList, 
+      whatToOrderList: rest.whatToOrderList,
       knownForIcons: rest.knownForIcons,
-      photos: rest.photos
-    }, {unique: true});
+      photos: rest.photos,
+    }, { unique: true });
     currentRest.save((err, rest) => {
       if (err) {
         console.log('could not save data in db', err);
@@ -36,8 +37,8 @@ let getDataToDatabase = function() {
   });
 };
 
-let getDataFromDatabase = (id, getData) => {
-  Restaurant.find({_id: id}, function(err, arrOfObj) {
+const getDataFromDatabase = (id, getData) => {
+  Restaurant.find({ _id: id }, (err, arrOfObj) => {
     if (err) {
       console.log('error in gettingdatafromdb', err);
       getData(err, null);
@@ -50,5 +51,5 @@ let getDataFromDatabase = (id, getData) => {
 
 getDataToDatabase();
 module.exports = {
-  getDataFromDatabase: getDataFromDatabase
+  getDataFromDatabase,
 };
