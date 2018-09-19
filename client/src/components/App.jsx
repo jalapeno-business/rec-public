@@ -47,7 +47,7 @@ class App extends React.Component {
   }
 
   getData(id) {
-    axios('/api/1/recommendations')
+    axios('http://localhost:3004/1')
       .then((res) => {
         const data = res.data[0].whatToOrderList;
         while (data.length < 3) {
@@ -73,12 +73,16 @@ class App extends React.Component {
     } = this.state;
     return (
       <div className={styles.outerContainer}>
-        <div className={styles.app}>
-          <WhatToOrder whatToOrder={whatToOrder} />
+        <div>
+          <WhatToOrder className="item-1" whatToOrder={whatToOrder} />
         </div>
-        <InsiderTip insiderTip={insiderTip} />
-        <KnownFor knownFor={knownFor} />
-        <ZagatMentions mentions={publicationsList} restaurantName={restaurantName} />
+        <div>
+          <InsiderTip className="item-2" insiderTip={insiderTip} />
+        </div>
+        <KnownFor className="item-3" knownFor={knownFor} />
+        <div>
+          <ZagatMentions className="item-4" mentions={publicationsList} restaurantName={restaurantName} />
+        </div>
       </div>
     );
   }

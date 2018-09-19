@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './KnownFor.styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styles from './KnownFor.styles.css';
 import container from './app.styles.css';
 
 class KnownFor extends React.Component {
