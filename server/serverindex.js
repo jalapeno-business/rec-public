@@ -1,12 +1,14 @@
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
 const db = require('../database/index.js');
 
+app.use(cors());
+
 app.use(express.static(`${__dirname}/../client/dist`));
-app.get('/api/:id/recommendations', (req, res) => {
+app.get('/:id', (req, res) => {
   db.getDataFromDatabase(req.params.id, (err, result) => {
-    console.log(req.params.id);
     if (err) {
       console.log('error in getting data from db in server', err);
     } else {
