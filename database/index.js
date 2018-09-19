@@ -49,7 +49,7 @@ const getDataFromDatabase = (id, getData) => {
   });
 };
 
-getDataToDatabase();
+// getDataToDatabase();
 module.exports = {
   getDataFromDatabase,
 };
