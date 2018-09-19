@@ -12,8 +12,9 @@ class KnownFor extends React.Component {
           { 
             this.props.knownFor.map(item => {
               return (
-                <div className={styles.knownText}> 
-                  <FontAwesomeIcon icon={item.icon} className={styles.knownImage}/>
+                <div className={styles.knownContainer}> 
+                  <img src="https://www.zagat.com/assets/knownfor/placeholder.svg" className={styles.knownImage} />
+                  {/* <FontAwesomeIcon icon={item.icon} className={styles.knownImage}/> */}
                   <div className={styles.knownText}> {item.title} </div>
                 </div>
               );

@@ -5,14 +5,19 @@ import container from './app.styles.css';
 class WhatToOrder extends React.Component {
 
   setImage(item) {
-    let defaultImage = 'https://www.thetastesf.com/wp-content/uploads/2016/08/Mensho-Tokyo-SF-ramen-thetastesf-DSC01715-2.jpg';
+    let defaultImage = 'https://www.zagat.com/assets/img/no-dish.png';
     if (item.img) {
       return (
-        <div className={styles.photo} style={{backgroundImage: `url(${item.img})`}}> <div className={styles.text}>{item.title}</div></div>
+        <div className={styles.photo} style={{backgroundImage: `url(${item.img})`}}> 
+          <div className={styles.overlay}></div>
+          <span className={styles.text}> {item.title} </span>
+        </div>
       );
     } else {
       return (
-        <div className={styles.photo} style={{backgroundImage: `url(${defaultImage})`}}> {item.title}</div> 
+          <div className={styles.photo} style={{backgroundImage: `url(${defaultImage})`}}> 
+            <span className={styles.text}> {item.title} </span>
+          </div> 
       );
     }
   }
@@ -24,13 +29,15 @@ class WhatToOrder extends React.Component {
 
   render() {
     return (
-      <div> 
+      <div>
         <h1 className={container.headings}> What To Order</h1>
-        <div className={styles.itemList}> 
+        <div className={styles.itemList}>
           {
-            this.props.whatToOrder.map(item => {
+            this.props.whatToOrder.map((item) => {
               return (
-                <div key={item.id} className={styles.photo}>{this.setImage(item)}</div>
+                <div key={item.id} className={styles.itemContainer}>
+                  <div className={styles.item}>{this.setImage(item)}</div>
+                </div>
               );
             })
           }
