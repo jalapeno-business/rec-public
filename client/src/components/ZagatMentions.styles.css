@@ -1,13 +1,93 @@
-img {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 5px;
-  width: 150px;
+
+.url {
+  display: flex;
+  flex-direction: row;
 }
 
-.mention {
+.photo {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  min-width: 120px;
+  min-height: 120px;
+}
+
+.subContainer {
+  height: 120px;
+  width: 372px;
   display: flex;
+  flex-direction: row;
+}
+
+.card {
+  height: 100%;
+  max-width: 578px;
+  max-height: 216px;
+  position: relative;
+  width: 100%;
+}
+
+.cardDetails {
   align-items: center;
-  justify-content: space-around;
-  margin: 15px;
+  background: none;
+  display: flex;
+  height: 76px;
+  max-width: 216px;
+  padding: 22px 14px;
+  position: absolute;
+}
+
+.cardTitle {
+  color: #101820;
+  font: 19px/23px 'Calibre-Medium';
+  letter-spacing: .013em;
+}
+
+.buttonContainer {
+  margin-top: 40px;
+  width: 50%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  background: none;
+  border: 2px solid #b70038;
+  height: 40px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.buttonText {
+  color: #b70038;
+  cursor: pointer;
+  font: 16px/24px 'Calibre-Medium';
+  letter-spacing: .086em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 600px) {
+
+  .itemContainer {
+    margin-bottom: -40px;
+  } 
+
+  .item {
+    margin-bottom: 40px;
+    display: inline-block;
+    width: 50%;
+  }
+}
+
+@media (max-width: 599px) {  
+  .item {
+    border-bottom: 1px #d0d2d3 solid;
+    display: block;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    width: unset;
+  }
+  
 }

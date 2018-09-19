@@ -4,6 +4,13 @@
   width: 75%;
 }
 
-.container {
+.textContainer {
   text-align: center;
+}
+
+.tipDivider {
+  border-top: 1px #d0d2d3 solid;
+  margin: 0 auto;
+  width: 30%;
+  margin-top: 25px;
 }

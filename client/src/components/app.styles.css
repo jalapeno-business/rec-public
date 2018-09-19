@@ -1,49 +1,20 @@
 
 body {
   background-color: #f1f1f2;
-  /* display: block; */
-}
-
-.item-1 {
-  grid-area: whatToOrder;
-}
-
-.item-1 {
-  grid-area: insiderTip;
-}
-
-.item-1 {
-  grid-area: knownFor;
-}
-
-.item-1 {
-  grid-area: public;
 }
 
 .outerContainer {
-  display: grid;
-  /* grid-template-columns: 100px 300px 100px; */
-  /* grid-template-rows: 50px 50px 300px 50px 300px 50px 300px 50px 300px 50px; */
-  /* grid-template-columns: 1fr 1fr 1fr 320px; */
-  grid-template-rows: 2fr repeat(3, 1fr);
-  /* grid-template-areas: 
-
-  "whatToOrder whatToOrder whatToOrder ."
-  "insiderTip insiderTip insiderTip"
-  "knownFor knownFor knownFor"
-  "public public public"; */
-
-  /* grid-row-gap: 10px; */
-  /* border: 6px black; */
-  /* background-color: white; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0 24px 40px;
+  background-color: #fff;
 }
 
-/* .module {
-  
-} */
 .headings {
   color: #656666;
   font: 16px/24px 'Roboto';
   letter-spacing: .086em;
   text-transform: uppercase;
+  padding-top: 33px;
 }
