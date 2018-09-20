@@ -43,11 +43,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getData(window.location.pathname);
+    let path = window.location.pathname.split('/');
+    this.getData(path[1]);
   }
 
   getData(id) {
-    axios('http://localhost:3004/5')
+    axios(`http://localhost:3004/api/restaurant/recommendations/${id}`)
       .then((res) => {
         const data = res.data[0].whatToOrderList;
         while (data.length < 3) {

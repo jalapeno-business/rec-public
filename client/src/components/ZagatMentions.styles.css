@@ -60,6 +60,10 @@
   margin-top: 40px;
 }
 
+.buttonHover {
+  background: #b70038;
+
+}
 .buttonText {
   color: #b70038;
   cursor: pointer;

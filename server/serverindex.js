@@ -6,11 +6,12 @@ const db = require('../database/index.js');
 
 app.use(cors());
 
-app.use(express.static(`${__dirname}/../client/dist`));
-app.get('/:id', (req, res) => {
+app.use('/:id', express.static(`${__dirname}/../client/dist`));
+app.get('/api/restaurant/recommendations/:id', (req, res) => {
   db.getDataFromDatabase(req.params.id, (err, result) => {
     if (err) {
       console.log('error in getting data from db in server', err);
+      res.status(400);
     } else {
       console.log('success in getting data from db', result);
       res.send(result).end();

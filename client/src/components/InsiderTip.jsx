@@ -11,7 +11,7 @@ const InsiderTip = (props) => {
       <div className={styles.textContainer}>
         <div className={styles.tipDivider}></div>
         <div className={styles.text}>
-          {insiderTip} 
+          {insiderTip}
         </div>
         <div className={styles.tipDivider}></div>
       </div>

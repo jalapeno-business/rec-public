@@ -12,7 +12,7 @@
     "test": "jest ",
     "watch": "jest --watch *.js",
     "react-dev": "webpack -d --watch",
-    "start": "node ./server/serverindex.js",
+    "start": "nodemon ./server/serverindex.js",
     "pretest": "./node_modules/.bin/eslint --ignore-path .gitignore .",
     "webpack": "webpack -p --config ./webpack.config.js"
   },
