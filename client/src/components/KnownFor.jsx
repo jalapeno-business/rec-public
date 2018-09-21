@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './KnownFor.styles.css';
-import container from './app.styles.css';
+import container from './App.styles.css';
 
 class KnownFor extends React.Component {
   render() {
@@ -10,7 +10,7 @@ class KnownFor extends React.Component {
         <h1 className={container.headings}> Known For </h1>
         <div className={styles.itemList}>
           { 
-            this.props.knownFor.map(item => {
+            this.props.knownFor.map((item) => {
               return (
                 <div className={styles.knownContainer}> 
                   <img src="https://www.zagat.com/assets/knownfor/placeholder.svg" className={styles.knownImage} />

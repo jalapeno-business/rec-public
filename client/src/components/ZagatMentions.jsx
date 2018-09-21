@@ -1,21 +1,20 @@
 import React from 'react';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import container from './app.styles.css';
+import container from './App.styles.css';
 import styles from './ZagatMentions.styles.css';
 
 class ZagatMentions extends React.Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       showMore: false,
       visible: [],
     };
     this.toggleVisible = this.toggleVisible.bind(this);
+    // this.showMentions = this.showMentions.bind(this);
   }
 
   showTwo() {
     const visible = this.props.mentions.slice(0, 2);
-    console.log(visible);
     return this.showMentions(visible);
   }
 

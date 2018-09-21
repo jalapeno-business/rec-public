@@ -2,34 +2,31 @@ const faker = require('faker');
 const fs = require('fs');
 const path = require('path');
 
-const publicationData = function (num) {
+const publicationData = (num) => {
   const data = [];
   for (let i = 0; i < num; i += 1) {
     data.push({
-      img:
-				'https://storage.googleapis.com/zagat-top-places/2014-12-san-francisco/27_4505_burger.jpg?max-w=305&auto=format',
+      img: 'https://storage.googleapis.com/zagat-top-places/2014-12-san-francisco/27_4505_burger.jpg?max-w=305&auto=format',
       title: faker.lorem.words(),
-      url:
-				'https://storage.googleapis.com/zagat-top-places/2014-12-san-francisco/27_4505_burger.jpg?max-w=305&auto=format'
+      url: 'https://storage.googleapis.com/zagat-top-places/2014-12-san-francisco/27_4505_burger.jpg?max-w=305&auto=format',
     });
   }
   return data;
 };
 
-const whatToOrderData = function (num) {
+const whatToOrderData = (num) => {
   const data = [];
   for (let i = 0; i < num; i += 1) {
     data.push({
       title: faker.lorem.words(),
-      img:
-				'https://storage.googleapis.com/zagat-top-places/2014-12-san-francisco/27_4505_burger.jpg?max-w=305&auto=format'
+      img: 'https://storage.googleapis.com/zagat-top-places/2014-12-san-francisco/27_4505_burger.jpg?max-w=305&auto=format',
     });
   }
   return data;
 };
 
-const knownForIcons = function (num) {
-  const possibleKnownFors = [
+const knownForIcons = (num) => {
+  const possibleKnownFor = [
     { tite: 'Parking', icon: 'car' },
     { title: 'Birthdays', icon: 'birthday-cake' },
     { title: 'Vegetarian', icon: 'leaf' },
@@ -42,7 +39,7 @@ const knownForIcons = function (num) {
   ];
   const using = [];
   for (let i = 0; i < num; i += 1) {
-    const item = possibleKnownFors[Math.floor(Math.random() * Math.floor(possibleKnownFors.length))];
+    const item = possibleKnownFor[Math.floor(Math.random() * Math.floor(possibleKnownFor.length))];
     if (!using.includes(item)) {
       using.push(item);
     }
@@ -50,16 +47,14 @@ const knownForIcons = function (num) {
   return using;
 };
 
-const createRestaurants = function (id) {
-  return {
-    id,
-    restaurant: faker.name.firstName(),
-    insiderTip: faker.lorem.paragraph(),
-    publicationsList: publicationData(faker.random.number({ min: 1, max: 15 })),
-    whatToOrderList: whatToOrderData(faker.random.number(3)),
-    knownForIcons: knownForIcons(Math.floor(Math.random() * Math.floor(7)))
-  };
-};
+const createRestaurants = id => ({
+  id,
+  restaurant: faker.name.firstName(),
+  insiderTip: faker.lorem.paragraph(),
+  publicationsList: publicationData(faker.random.number({ min: 1, max: 15 })),
+  whatToOrderList: whatToOrderData(faker.random.number(3)),
+  knownForIcons: knownForIcons(Math.floor(Math.random() * Math.floor(7))),
+});
 
 const restaurants = [];
 for (let i = 1; i <= 100; i += 1) {

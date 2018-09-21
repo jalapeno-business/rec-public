@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './WhatToOrder.styles.css';
-import container from './app.styles.css';
+import container from './App.styles.css';
 
 class WhatToOrder extends React.Component {
 
@@ -21,11 +21,6 @@ class WhatToOrder extends React.Component {
       );
     }
   }
-  // } else if (item.title && item.img) {
-  //   return (
-  //     <div className={styles.photo} style={{backgroundImage: `url(${defaultImage})`}}> {item.title}</div> 
-  //   );
-  // }
 
   render() {
     return (

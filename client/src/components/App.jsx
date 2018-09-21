@@ -15,7 +15,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import WhatToOrder from './WhatToOrder';
 import InsiderTip from './InsiderTip';
 import KnownFor from './KnownFor';
-import styles from './app.styles.css';
+import styles from './App.styles.css';
 import ZagatMentions from './ZagatMentions';
 
 library.add(
@@ -43,7 +43,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    let path = window.location.pathname.split('/');
+    const path = window.location.pathname.split('/');
     this.getData(path[1]);
   }
 
@@ -63,8 +63,7 @@ class App extends React.Component {
         });
       })
       .catch((error) => {
-        // console.log('error found in getwhattoorderohoto in app.jsx', error);
-        throw error;
+        console.log('error found in getwhattoorderohoto in app.jsx', error);
       });
   }
 
