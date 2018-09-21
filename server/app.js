@@ -10,7 +10,7 @@ app.use('/:id', express.static(`${__dirname}/../client/dist`));
 app.get('/api/restaurant/recommendations/:id', (req, res) => {
   db.getRestaurantRecommendation(req.params.id, (err, result) => {
     if (err) {
-      console.log('error in getting data from db in server');
+      console.log('error in getting data from db in server', err);
       res.status(400);
     } else {
       res.send(result);

@@ -12,6 +12,7 @@ RUN npm install
 # bundle app source
 COPY . . 
 
-EXPOSE 8080
+# was 8080, switched to personal port and now works. error was that get requests not working
+EXPOSE 3004
 
 CMD ["npm", "start"]
