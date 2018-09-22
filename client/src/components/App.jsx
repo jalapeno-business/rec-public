@@ -43,13 +43,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // let id = window.location.pathname.split('/');
-    // if (id === '/') {
-    //   id = '/1';
-    // }
-    // this.getData(id[1]);
-    const path = window.location.pathname.split('/');
-    this.getData(path[1]);
+    let id = window.location.pathname.split('/');
+    if (id === '/') {
+      id = '/1';
+    }
+    this.getData(id[1]);
+    const id = window.location.pathname.split('/');
+    this.getData(id[1]);
   }
 
   getData(id) {
