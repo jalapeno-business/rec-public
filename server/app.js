@@ -6,7 +6,7 @@ const db = require('../database/index.js');
 
 app.use(cors());
 
-app.use('/:id', express.static(`${__dirname}/../client/dist`));
+app.use(express.static(`${__dirname}/../client/dist`));
 app.get('/api/restaurant/recommendations/:id', (req, res) => {
   db.getRestaurantRecommendation(req.params.id, (err, result) => {
     if (err) {

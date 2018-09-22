@@ -43,17 +43,17 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    let id = window.location.pathname.split('/');
+    console.log(window.location.pathname);
+    let id = window.location.pathname;
     if (id === '/') {
-      id = '/1';
+      id = '/1'; 
     }
-    this.getData(id[1]);
-    const id = window.location.pathname.split('/');
-    this.getData(id[1]);
+    this.getData(id);
   }
 
   getData(id) {
-    axios(`/api/restaurant/recommendations/${id}`)
+    console.log(id);
+    axios(`/api/restaurant/recommendations${id}`)
       .then((res) => {
         const data = res.data[0].whatToOrderList;
         while (data.length < 3) {
