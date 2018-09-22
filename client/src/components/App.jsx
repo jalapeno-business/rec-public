@@ -48,7 +48,7 @@ class App extends React.Component {
   }
 
   getData(id) {
-    axios(`http://localhost:3004/api/restaurant/recommendations/${id}`)
+    axios(`/api/restaurant/recommendations/${id}`)
       .then((res) => {
         const data = res.data[0].whatToOrderList;
         while (data.length < 3) {
@@ -87,5 +87,6 @@ class App extends React.Component {
     );
   }
 }
+
 
 export default App;

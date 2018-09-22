@@ -23,7 +23,6 @@ coverage
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 build/
 
-
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
