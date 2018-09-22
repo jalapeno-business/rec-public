@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import container from './App.styles.css';
 import styles from './ZagatMentions.styles.css';
 
@@ -10,7 +11,7 @@ class ZagatMentions extends React.Component {
       visible: [],
     };
     this.toggleVisible = this.toggleVisible.bind(this);
-    // this.showMentions = this.showMentions.bind(this);
+    this.showMentions = this.showMentions.bind(this);
   }
 
   showTwo() {
@@ -69,7 +70,7 @@ class ZagatMentions extends React.Component {
           }
         </div>
         <div className={styles.buttonContainer}>
-          <button type="button" onClick={this.toggleVisible} onMouseOver={styles.buttonHover} className={styles.button}>
+          <button type="button" onClick={this.toggleVisible} className={styles.button}>
             <span className={styles.buttonText}>{showMore ? 'SHOW LESS' : `SHOW ALL (${mentions.length})`}</span>
           </button>
         </div>
@@ -77,5 +78,10 @@ class ZagatMentions extends React.Component {
     );
   }
 }
+
+ZagatMentions.propTypes = {
+  restaurantName: PropTypes.string.isRequired,
+};
+// onMouseOver={styles.buttonHover} 
 
 export default ZagatMentions;

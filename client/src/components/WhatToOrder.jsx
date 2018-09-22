@@ -32,7 +32,7 @@ const WhatToOrder = ({ whatToOrder }) => {
         {
             whatToOrder.map(item => (
               <div key={item.id} className={styles.itemContainer}>
-                <div className={styles.item}>{setImage(item)}</div>
+                <div key={item.id} className={styles.item}>{setImage(item)}</div>
               </div>
             ))
           }
