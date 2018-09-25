@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://student:student12345!@ds251362.mlab.com:51362/jalapeno-business-recommendations');
-// var scripts = require('../data/script');
-const seededData = require('../data/seeded_data.json');
+const seededData = require('./data/seeded_data.json');
 
 const restaurantSchema = new mongoose.Schema({
   _id: Number,
@@ -16,7 +15,7 @@ const restaurantSchema = new mongoose.Schema({
 
 const Restaurant = mongoose.model('Restaurant', restaurantSchema);
 
-const getDataToDatabase = function () {
+const seedRecommendationData = () => {
   seededData.forEach((rest) => {
     const currentRest = new Restaurant({
       _id: rest.id,
@@ -29,27 +28,24 @@ const getDataToDatabase = function () {
     }, { unique: true });
     currentRest.save((err, rest) => {
       if (err) {
-        console.log('could not save data in db', err);
-      } else {
-        // console.log("successfully saved data", rest);
+        console.log('could not save data in db');
       }
     });
   });
 };
 
-const getDataFromDatabase = (id, getData) => {
+const getRestaurantRecommendation = (id, getData) => {
   Restaurant.find({ _id: id }, (err, arrOfObj) => {
     if (err) {
-      console.log('error in gettingdatafromdb', err);
+      console.log('error in gettingdatafromdb');
       getData(err, null);
     } else {
-      console.log('get req success');
       getData(null, arrOfObj);
     }
   });
 };
 
-// getDataToDatabase();
+// getRestaurantRecommendation();
 module.exports = {
-  getDataFromDatabase,
+  getRestaurantRecommendation,
 };

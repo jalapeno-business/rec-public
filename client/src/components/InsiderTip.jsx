@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './InsiderTip.styles.css';
-import container from './app.styles.css';
-import { join } from 'path';
+import container from './App.styles.css';
 
 const InsiderTip = (props) => {
   const { insiderTip } = props;
@@ -9,11 +8,11 @@ const InsiderTip = (props) => {
     <div className={styles.container}>
       <h1 className={container.headings}> Insider Tips </h1>
       <div className={styles.textContainer}>
-        <div className={styles.tipDivider}></div>
+        <div className={styles.tipDivider} />
         <div className={styles.text}>
-          {insiderTip} 
+          {insiderTip}
         </div>
-        <div className={styles.tipDivider}></div>
+        <div className={styles.tipDivider} />
       </div>
     </div>
   );

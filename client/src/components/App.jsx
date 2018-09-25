@@ -11,11 +11,11 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import WhatToOrder from './WhatToOrder';
 import InsiderTip from './InsiderTip';
 import KnownFor from './KnownFor';
-import styles from './app.styles.css';
+import styles from './App.styles.css';
 import ZagatMentions from './ZagatMentions';
 
 library.add(
@@ -43,11 +43,17 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getData(window.location.pathname);
+    console.log(window.location.pathname);
+    let id = window.location.pathname;
+    if (id === '/') {
+      id = '/1'; 
+    }
+    this.getData(id);
   }
 
   getData(id) {
-    axios('http://localhost:3004/5')
+    console.log(id);
+    axios(`/api/restaurant/recommendations${id}`)
       .then((res) => {
         const data = res.data[0].whatToOrderList;
         while (data.length < 3) {
@@ -62,8 +68,7 @@ class App extends React.Component {
         });
       })
       .catch((error) => {
-        // console.log('error found in getwhattoorderohoto in app.jsx', error);
-        throw error;
+        console.log('error found in getwhattoorderohoto in app.jsx', error);
       });
   }
 

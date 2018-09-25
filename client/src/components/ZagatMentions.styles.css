@@ -40,7 +40,7 @@
 
 .cardTitle {
   color: #101820;
-  font: 19px/23px 'Calibre-Medium';
+  /* font: 19px/23px 'Calibre-xsMedium'; */
   letter-spacing: .013em;
 }
 
@@ -60,10 +60,14 @@
   margin-top: 40px;
 }
 
+.buttonHover {
+  background: #b70038;
+
+}
 .buttonText {
   color: #b70038;
   cursor: pointer;
-  font: 16px/24px 'Calibre-Medium';
+  /* font: 16px/24px 'Calibre-Medium'; */
   letter-spacing: .086em;
   text-transform: uppercase;
 }
