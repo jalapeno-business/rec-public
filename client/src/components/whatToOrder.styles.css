@@ -34,6 +34,7 @@
 
 .overlay {
   background-color: rgba(16,24,32,.35);
+  opacity: .75;
   height: 100%;
   width: 100%;
 }

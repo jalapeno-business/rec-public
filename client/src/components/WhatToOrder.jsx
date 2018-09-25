@@ -5,7 +5,7 @@ import container from './App.styles.css';
 
 const WhatToOrder = ({ whatToOrder }) => {
   const setImage = (item) => {
-    const defaultImage = 'https://www.zagat.com/assets/img/no-dish.png';
+    const defaultImage = 'https://s3-us-west-1.amazonaws.com/zagatphotos/no-dish-min.png';
     if (item.img) {
       return (
         <div className={styles.photo} style={{ backgroundImage: `url(${item.img})` }}>
@@ -24,21 +24,23 @@ const WhatToOrder = ({ whatToOrder }) => {
       </div>
     );
   };
-
-  return (
-    <div>
-      <h1 className={container.headings}> What To Order</h1>
-      <div className={styles.itemList}>
-        {
-            whatToOrder.map(item => (
-              <div key={item.id} className={styles.itemContainer}>
-                <div key={item.id} className={styles.item}>{setImage(item)}</div>
-              </div>
-            ))
-          }
+  if (whatToOrder.length !== 0) {
+    return (
+      <div>
+        <h1 className={container.headings}> What To Order</h1>
+        <div className={styles.itemList}>
+          {
+              whatToOrder.map(item => (
+                <div key={item.id} className={styles.itemContainer}>
+                  <div key={item.id} className={styles.item}>{setImage(item)}</div>
+                </div>
+              ))
+            }
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+  return null;
 };
 
 WhatToOrder.propTypes = {

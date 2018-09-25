@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import container from './App.styles.css';
 import styles from './ZagatMentions.styles.css';
+import { PromiseProvider } from 'mongoose';
 
 class ZagatMentions extends React.Component {
   constructor(props) {
@@ -28,10 +29,12 @@ class ZagatMentions extends React.Component {
           <div className={styles.item} key={item.id}>
             <a href={item.url} className={styles.url} target="_blank" rel="noreferrer noopener">
               <div className={styles.subContainer}>
-              <div style={{backgroundImage: `url(${item.img})`}} className={styles.photo}></div>
+                <div className={styles.photoContainer}>
+                  <div style={{backgroundImage: `url(${item.img})`}} className={styles.photo} id={styles.box}></div>
+                </div>
               <div className={styles.card}>
                 <div className={styles.cardDetails}>
-                  <h1 className={styles.cardTitle}>This is the title</h1>
+                  <h1 className={styles.cardTitle}>{item.title}</h1>
                 </div>
               </div>
             </div>
@@ -53,29 +56,32 @@ class ZagatMentions extends React.Component {
   render() {
     const { mentions, restaurantName } = this.props;
     const { showMore } = this.state;
-    return (
-      <div>
-        <h1 className={container.headings}>
-        Zagat Mentions of
-          {restaurantName}
-        </h1>
+    if (mentions.length !== 0) {
+      return (
         <div>
-          {
-            showMore ? this.showMentions(mentions)
-              : (
-                <div>
-                  { this.showTwo() }
-                </div>
-              )
-          }
+          <h1 className={container.headings}>
+          Zagat Mentions of
+            {` ${restaurantName}` }
+          </h1>
+          <div>
+            {
+              showMore ? this.showMentions(mentions)
+                : (
+                  <div>
+                    { this.showTwo() }
+                  </div>
+                )
+            }
+          </div>
+          <div className={styles.buttonContainer}>
+            <button type="button" onClick={this.toggleVisible} className={styles.button}>
+              <span className={styles.buttonText}>{showMore ? 'SHOW LESS' : `SHOW ALL (${mentions.length})`}</span>
+            </button>
+          </div>
         </div>
-        <div className={styles.buttonContainer}>
-          <button type="button" onClick={this.toggleVisible} className={styles.button}>
-            <span className={styles.buttonText}>{showMore ? 'SHOW LESS' : `SHOW ALL (${mentions.length})`}</span>
-          </button>
-        </div>
-      </div>
-    );
+      );
+    }
+    return null;
   }
 }
 
