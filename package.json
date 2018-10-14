@@ -4,6 +4,7 @@
   "description": "",
   "author": "",
   "license": "",
+  
   "engines": {
     "node": ">=6.13.0"
   },
@@ -13,7 +14,6 @@
     "watch": "jest --watch *.js",
     "react-dev": "webpack -d --watch",
     "start": "node ./server/app.js",
-    "pretest": "./node_modules/.bin/eslint --ignore-path .gitignore .",
     "webpack": "webpack --config ./webpack.prod.js"
   },
   "dependencies": {
@@ -63,4 +63,5 @@
     "supertest": "^3.3.0",
     "webpack-cli": "^3.1.0"
   }
+  
 }
