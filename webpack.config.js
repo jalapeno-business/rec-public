@@ -22,7 +22,6 @@ module.exports = {
       },
     ],
   },
-  watch: true,
   output: {
     filename: 'bundle.js',
     path: DIST_DIR,

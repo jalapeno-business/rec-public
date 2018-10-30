@@ -45,7 +45,7 @@ const getRestaurantRecommendation = (id, getData) => {
   });
 };
 
-// getRestaurantRecommendation();
+// seedRecommendationData();
 module.exports = {
   getRestaurantRecommendation,
 };

@@ -13,6 +13,9 @@
   height: 72px;
   width: 100%;
   border: none; 
+  background-repeat: no-repeat;
+  background-size: 90%;
+  background-position-x: center;
 }
 
 .knownContainer {
@@ -23,4 +26,6 @@
 
 .knownText {
   text-align: center;
+  margin: inherit;
+  letter-spacing: .013em;
 }

@@ -4,6 +4,13 @@
   flex-direction: row;
 }
 
+.photoContainer {
+  height: 120px;
+  width: 120px !important;
+  overflow: hidden;
+  background-color: black;
+}
+
 .photo {
   background-repeat: no-repeat;
   background-position: center;
@@ -11,6 +18,15 @@
   position: relative;
   min-width: 120px;
   min-height: 120px;
+  transition: all .2s ease-in-out;
+}
+
+.item:hover .photo {
+  transform: scale(1.01);
+}
+
+.item:hover #box {
+  opacity: 0.9;
 }
 
 .subContainer {
@@ -24,8 +40,6 @@
   height: 100%;
   max-width: 578px;
   max-height: 216px;
-  position: relative;
-  width: 100%;
 }
 
 .cardDetails {
@@ -40,8 +54,14 @@
 
 .cardTitle {
   color: #101820;
-  /* font: 19px/23px 'Calibre-xsMedium'; */
+  font: 19px/23px;
   letter-spacing: .013em;
+}
+
+.item:hover .cardTitle {
+  text-decoration: underline;
+  -webkit-text-decoration-color: #b70038;    
+  text-decoration-color: #b70038;
 }
 
 .buttonContainer {
@@ -52,25 +72,32 @@
   justify-content: center;
 }
 
-.button {
+button {
   background: none;
   border: 2px solid #b70038;
   height: 40px;
+  width: 192px;
   text-align: center;
   margin-top: 40px;
 }
 
-.buttonHover {
+button:hover {
   background: #b70038;
-
 }
+
+button:hover .buttonText {
+  color: white;
+}
+
 .buttonText {
   color: #b70038;
   cursor: pointer;
-  /* font: 16px/24px 'Calibre-Medium'; */
+  font: 16px/24px;
   letter-spacing: .086em;
   text-transform: uppercase;
 }
+
+button:focus {outline:0;}
 
 @media (min-width: 600px) {
 
