@@ -1,6 +1,6 @@
 # Project Name
 
-> Project description
+> Recommendations module for Jalapeno Business, a restaurant-rating website clone of Zagat
 
 ## Related Projects
 
@@ -17,23 +17,14 @@
 
 ## Usage
 
-> Some usage instructions
-
-## Requirements
-
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-- etc
+> npm install
 
 ## Development
 
-### Installing Dependencies
-
-From within the root directory:
-
+### Local 
+- Requirements: MongoDB
 ```sh
-npm install -g webpack
-npm install
+- npm install 
+- npm run start (run node on server)
+- npm run react-dev (webpack watch)
 ```
-
