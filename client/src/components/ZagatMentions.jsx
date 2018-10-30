@@ -88,6 +88,5 @@ class ZagatMentions extends React.Component {
 ZagatMentions.propTypes = {
   restaurantName: PropTypes.string.isRequired,
 };
-// onMouseOver={styles.buttonHover} 
 
 export default ZagatMentions;
